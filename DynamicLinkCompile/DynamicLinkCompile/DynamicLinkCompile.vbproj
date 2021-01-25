@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DynamicLinkCompile</RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>DynamicLinkCompile.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Import Include="DynamicLink_ProgramLinkService" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Diagnostics.CodeAnalysis" />
+    <Import Include="System.Diagnostics.Tracing" />
+    <Import Include="System.Dynamic" />
+    <Import Include="System.IO" />
+    <Import Include="System.Reflection" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Threading" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DynamicLink_ProgramLinkService\DynamicLink_ProgramLinkService.vbproj" />
+  </ItemGroup>
+
+</Project>
