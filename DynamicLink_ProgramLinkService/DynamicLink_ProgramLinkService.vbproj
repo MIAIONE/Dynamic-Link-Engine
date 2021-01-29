@@ -16,4 +16,8 @@
     <Import Include="System.Threading" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="base struct and class\Start-Compile\" />
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,7 @@ Public Class LinkService
 
         Dim HoverCode As String = ApiFunction.GetOriginalCode(Code_PLS)
         Dim test1 As String = "(appk)"
-        Dim test2 As String = "(object:i,int:x)"
+        Dim test2 As String = "(string:i,int:x)"
         Dim test3 As String = "{
     int:kls;
     kls<-888;
@@ -20,9 +20,11 @@ Public Class LinkService
     //out line
 }"
         Dim testvoidf As New VoidStructure(test1, test2, test3)
+        Dim VAR1 = testvoidf.VoidParameter.Item("i")
+        Dim VAR2 = testvoidf.VoidParameter.Item("x")
         Console.WriteLine("name:" + testvoidf.VoidName)
-        Console.WriteLine("var1:" + testvoidf.VoidParameter.Item("i"))
-        Console.WriteLine("var2:" + testvoidf.VoidParameter.Item("x"))
+        Console.WriteLine("var1:" + VAR1.Name)
+        Console.WriteLine("var2:" + VAR2.Name)
         Console.WriteLine("code:" + testvoidf.VoidMainCode)
 
         Console.ReadKey()

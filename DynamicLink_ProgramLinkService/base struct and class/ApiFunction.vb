@@ -1,4 +1,44 @@
 ﻿Public Class ApiFunction
+    Public Shared Function GetTypeByString(types As String) As Type
+        Select Case types.ToLower()
+            Case "bool"
+                Return Type.[GetType]("System.Boolean", True, True)
+            Case "byte"
+                Return Type.[GetType]("System.Byte", True, True)
+            Case "sbyte"
+                Return Type.[GetType]("System.SByte", True, True)
+            Case "char"
+                Return Type.[GetType]("System.Char", True, True)
+            Case "decimal"
+                Return Type.[GetType]("System.Decimal", True, True)
+            Case "double"
+                Return Type.[GetType]("System.Double", True, True)
+            Case "float"
+                Return Type.[GetType]("System.Single", True, True)
+            Case "int"
+                Return Type.[GetType]("System.Int32", True, True)
+            Case "uint"
+                Return Type.[GetType]("System.UInt32", True, True)
+            Case "long"
+                Return Type.[GetType]("System.Int64", True, True)
+            Case "ulong"
+                Return Type.[GetType]("System.UInt64", True, True)
+            Case "object"
+                Return Type.[GetType]("System.Object", True, True)
+            Case "short"
+                Return Type.[GetType]("System.Int16", True, True)
+            Case "ushort"
+                Return Type.[GetType]("System.UInt16", True, True)
+            Case "string"
+                Return Type.[GetType]("System.String", True, True)
+            Case "date", "datetime"
+                Return Type.[GetType]("System.DateTime", True, True)
+            Case "guid"
+                Return Type.[GetType]("System.Guid", True, True)
+            Case Else
+                Return Type.[GetType](types, True, True)
+        End Select
+    End Function
     Public Shared Function GetOriginalCode(ByVal input As String) As String
         input = Regex.Replace(input, "/\*[\s\S]*?\*/", "", RegexOptions.IgnoreCase)
         input = Regex.Replace(input, "^\s*//[\s\S]*?$", "", RegexOptions.Multiline)
@@ -20,9 +60,9 @@
         Return oldStr.Split(",", StringSplitOptions.RemoveEmptyEntries)(0).Trim
     End Function
 
-    Public Shared Function GetFunctionReturnType(oldstring As String) As String
+    Public Shared Function GetFunctionReturnType(oldstring As String) As Type
         Dim oldStr As String = Regex.Replace(oldstring, "(.*\()(.*)(\).*)", "$2", RegexOptions.IgnoreCase)
-        Return oldStr.Split(",", StringSplitOptions.RemoveEmptyEntries)(1).Trim
+        Return Type.GetType(oldStr.Split(",", StringSplitOptions.RemoveEmptyEntries)(1).Trim)
     End Function
 
     Public Shared Function GetStrCenter(sourse As String, startstr As String, endstr As String) As String
