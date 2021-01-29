@@ -1,6 +1,10 @@
 Public Class LinkService
-
+    '-------test code 因为还没有正式完成，所以这里会以测试代码为主
     Public Function Compile(code As String) As CompileResults
+#Region "已完成部分"
+
+
+
         Dim Code_PLS As String = code
 
         If Equals(Code_PLS.Substring(0, 6).ToUpper, "!#[RE]") = False Then
@@ -8,6 +12,10 @@ Public Class LinkService
         End If
 
         Dim HoverCode As String = ApiFunction.GetOriginalCode(Code_PLS)
+
+
+
+#End Region
         Dim test1 As String = "(appk)"
         Dim test2 As String = "(string:i,int:x)"
         Dim test3 As String = "{
